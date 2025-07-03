@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commandes Git - Accueil</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <svg width="30" height="30" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M90.156 41.965L50.036 1.848c-2.34-2.34-6.135-2.34-8.475 0l-8.321 8.32 10.698 10.698c2.487-0.84 5.339-0.276 7.32 1.705 1.989 1.99 2.55 4.85 1.704 7.345l10.311 10.312c2.495-0.845 5.356-0.285 7.346 1.705 2.781 2.781 2.781 7.29 0 10.071-2.78 2.781-7.29 2.781-10.07 0-2.088-2.09-2.608-5.151-1.55-7.713l-9.615-9.616-0.001 25.325c0.677 0.335 1.316 0.783 1.88 1.347 2.78 2.781 2.78 7.289 0 10.071-2.78 2.781-7.29 2.781-10.07 0-2.781-2.781-2.781-7.29 0-10.07 0.686-0.686 1.481-1.205 2.331-1.54v-25.57c-0.85-0.335-1.645-0.855-2.33-1.54-2.097-2.098-2.61-5.174-1.54-7.744L18.649 9.376 1.85 26.175c-2.34 2.34-2.34 6.136 0 8.476l40.121 40.115c2.34 2.339 6.135 2.339 8.475 0l39.82-39.82c2.34-2.34 2.34-6.136 0-8.476" fill="white" />
+                    </svg>
+                </div>
+                <span class="site-title">Git Zér<span class="s1">o</span><span class="s2">o</span><span class="s3">o</span></span>
+            </div>
+            <nav class="nav">
+                <a class="nav-link" href="index.html">Accueil</a>
+                <a class="nav-link active" href="AcceilCommand.html">Commandes</a>
+                <a class="nav-link" href="about.html">À propos</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero-section">
+        <h1 class="hero-title">Toutes les commandes Git essentielles</h1>
+        <p class="hero-subtitle">Explorez, recherchez et découvrez chaque commande Git avec des explications claires et des exemples concrets.</p>
+    </section>
+    <!-- Barre de recherche premium -->
+    <section class="search-premium-container" style="display: flex; justify-content: center; margin-bottom: 2rem;">
+        <form class="search-form" autocomplete="off" role="search" aria-label="Recherche de commandes Git" style="display: flex; align-items: center; background: var(--glass-bg); border-radius: 2em; box-shadow: var(--shadow-glass); padding: 0.5em 1.5em; gap: 0.7em;">
+            <span class="search-icon" aria-hidden="true" style="color: var(--text-secondary); font-size: 1.3em;">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </span>
+            <input type="text" class="search-input" placeholder="Recherchez une commande Git (ex : git commit, git branch...)" aria-label="Rechercher une commande Git" style="border: none; outline: none; background: transparent; color: var(--text-primary); font-size: 1.1em; padding: 0.5em 0.7em; min-width: 220px;">
+            <button type="submit" class="search-button" aria-label="Lancer la recherche" style="background: var(--primary-gradient); color: #fff; border: none; border-radius: 2em; padding: 0.5em 1.2em; font-weight: 600; font-size: 1em; cursor: pointer; transition: background 0.2s;">Rechercher</button>
+        </form>
+    </section>
+    <main>
+        <section class="content-section">
+            <h2 class="section-title">Commandes de base</h2>
+            <div class="contributors-grid">
+                <div class="contributor">
+                    <!-- git init -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="10" width="20" height="14" rx="4" stroke="url(#init-gradient)" stroke-width="2" fill="none"/>
+                            <path d="M16 14v6" stroke="url(#init-gradient)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M13 17h6" stroke="url(#init-gradient)" stroke-width="2" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="init-gradient" x1="6" y1="10" x2="26" y2="24" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git init</h4>
+                    <p class="contributor-role">Initialise un nouveau dépôt Git dans le répertoire courant.</p>
+                    <a href="commands/git-init.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+                <div class="contributor">
+                    <!-- git clone -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="8" width="8" height="8" rx="2" stroke="url(#clone-gradient)" stroke-width="2" fill="none"/>
+                            <rect x="18" y="16" width="8" height="8" rx="2" stroke="url(#clone-gradient)" stroke-width="2" fill="none"/>
+                            <path d="M14 12l4 4" stroke="url(#clone-gradient)" stroke-width="2" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="clone-gradient" x1="6" y1="8" x2="26" y2="24" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git clone</h4>
+                    <p class="contributor-role">Copie un dépôt existant vers un nouveau répertoire local.</p>
+                    <a href="commands/git-clone.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+                <div class="contributor">
+                    <!-- git add -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="8" width="16" height="16" rx="4" stroke="url(#add-gradient)" stroke-width="2" fill="none"/>
+                            <path d="M16 12v8M12 16h8" stroke="url(#add-gradient)" stroke-width="2" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="add-gradient" x1="8" y1="8" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git add</h4>
+                    <p class="contributor-role">Ajoute des fichiers à la zone de staging.</p>
+                    <a href="commands/git-add.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+                <div class="contributor">
+                    <!-- git commit -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="10" stroke="url(#commit-gradient)" stroke-width="2" fill="none"/>
+                            <path d="M12 16l3 3 5-5" stroke="url(#commit-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs>
+                                <linearGradient id="commit-gradient" x1="6" y1="6" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git commit</h4>
+                    <p class="contributor-role">Enregistre les changements dans l'historique du dépôt.</p>
+                    <a href="commands/git-commit.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+            </div>
+        </section>
+        <section class="content-section">
+            <h2 class="section-title">Travail avec les branches</h2>
+            <div class="contributors-grid">
+                <div class="contributor">
+                    <!-- git branch -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 24V8a4 4 0 1 1 4 4h4a4 4 0 1 1 4 4v8" stroke="url(#branch-gradient)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <circle cx="8" cy="8" r="2" fill="#667eea"/>
+                            <circle cx="16" cy="12" r="2" fill="#f5576c"/>
+                            <circle cx="24" cy="16" r="2" fill="#00f2fe"/>
+                            <defs>
+                                <linearGradient id="branch-gradient" x1="8" y1="8" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git branch</h4>
+                    <p class="contributor-role">Liste, crée ou supprime des branches dans le dépôt.</p>
+                    <a href="commands/git-branch.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+                <div class="contributor">
+                    <!-- git checkout -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 16h16m0 0l-4-4m4 4l-4 4" stroke="url(#checkout-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="8" cy="16" r="2" fill="#667eea"/>
+                            <defs>
+                                <linearGradient id="checkout-gradient" x1="8" y1="16" x2="24" y2="16" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git checkout</h4>
+                    <p class="contributor-role">Bascule entre les branches ou restaure des fichiers.</p>
+                    <a href="commands/git-checkout.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+                <div class="contributor">
+                    <!-- git merge -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 24V20a6 6 0 0 1 6-6h0a6 6 0 0 1 6 6v4" stroke="url(#merge-gradient)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <circle cx="10" cy="24" r="2" fill="#667eea"/>
+                            <circle cx="22" cy="24" r="2" fill="#f5576c"/>
+                            <circle cx="16" cy="14" r="2" fill="#00f2fe"/>
+                            <defs>
+                                <linearGradient id="merge-gradient" x1="10" y1="14" x2="22" y2="24" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git merge</h4>
+                    <p class="contributor-role">Fusionne une branche dans la branche courante.</p>
+                    <a href="commands/git-merge.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+                <div class="contributor">
+                    <!-- git rebase -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 24V8m0 0a6 6 0 0 1 12 0v16" stroke="url(#rebase-gradient)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <circle cx="10" cy="8" r="2" fill="#667eea"/>
+                            <circle cx="22" cy="8" r="2" fill="#f5576c"/>
+                            <circle cx="22" cy="24" r="2" fill="#00f2fe"/>
+                            <defs>
+                                <linearGradient id="rebase-gradient" x1="10" y1="8" x2="22" y2="24" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git rebase</h4>
+                    <p class="contributor-role">Réapplique les commits d'une branche sur une autre.</p>
+                    <a href="commands/git-rebase.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+            </div>
+        </section>
+        <section class="content-section">
+            <h2 class="section-title">Commandes de collaboration</h2>
+            <div class="contributors-grid">
+                <div class="contributor">
+                    <!-- git pull -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 6v16" stroke="url(#pull-gradient)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M10 18l6 6 6-6" stroke="url(#pull-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="16" cy="6" r="2" fill="#667eea"/>
+                            <defs>
+                                <linearGradient id="pull-gradient" x1="10" y1="6" x2="22" y2="24" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git pull</h4>
+                    <p class="contributor-role">Récupère et fusionne les modifications du dépôt distant.</p>
+                    <a href="commands/git-pull.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+                <div class="contributor">
+                    <!-- git push -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 26V10" stroke="url(#push-gradient)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M22 14l-6-6-6 6" stroke="url(#push-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="16" cy="26" r="2" fill="#f5576c"/>
+                            <defs>
+                                <linearGradient id="push-gradient" x1="10" y1="10" x2="22" y2="26" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git push</h4>
+                    <p class="contributor-role">Envoie les commits locaux vers le dépôt distant.</p>
+                    <a href="commands/git-push.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+                <div class="contributor">
+                    <!-- git fetch -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="10" stroke="url(#fetch-gradient)" stroke-width="2" fill="none"/>
+                            <path d="M16 10v6l4 4" stroke="url(#fetch-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs>
+                                <linearGradient id="fetch-gradient" x1="6" y1="6" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git fetch</h4>
+                    <p class="contributor-role">Récupère les modifications du dépôt distant sans fusionner.</p>
+                    <a href="commands/git-fetch.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+                <div class="contributor">
+                    <!-- git remote -->
+                    <span class="contributor-image" style="display:flex;align-items:center;justify-content:center;background:var(--primary-gradient);border-radius:50%;width:48px;height:48px;margin:0 auto 1em auto;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="10" stroke="url(#remote-gradient)" stroke-width="2" fill="none"/>
+                            <path d="M16 10a6 6 0 1 1 0 12a6 6 0 1 1 0-12z" stroke="url(#remote-gradient)" stroke-width="2" fill="none"/>
+                            <path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="url(#remote-gradient)" stroke-width="2" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="remote-gradient" x1="6" y1="6" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#f5576c"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <h4 class="contributor-name">git remote</h4>
+                    <p class="contributor-role">Gère les dépôts distants associés au projet.</p>
+                    <a href="commands/git-remote.html" class="bouton-details" style="display:inline-block;margin-top:1em;background:var(--primary-gradient);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:600;text-decoration:none;transition:background 0.2s;">Voir en détail</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-title">Git Zér<span class="s1">o</span><span class="s2">o</span><span class="s3">o</span></div>
+            <div class="footer-text">&copy; 2025 Projet Collaboratif – Tous droits réservés.</div>
+        </div>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const champRecherche = document.querySelector('.search-input');
+      const cartesCommandes = document.querySelectorAll('.contributor');
+
+      champRecherche.addEventListener('input', function () {
+        const requete = this.value.trim().toLowerCase();
+        cartesCommandes.forEach(function (carte) {
+          const texteCommande = carte.querySelector('.contributor-name').textContent.toLowerCase();
+          const texteRole = carte.querySelector('.contributor-role').textContent.toLowerCase();
+          if (texteCommande.includes(requete) || texteRole.includes(requete)) {
+            carte.style.display = '';
+            carte.classList.add('surlignage');
+          } else {
+            carte.style.display = 'none';
+            carte.classList.remove('surlignage');
+          }
+        });
+      });
+
+      champRecherche.addEventListener('focus', function () {
+        this.classList.add('focus-recherche');
+      });
+      champRecherche.addEventListener('blur', function () {
+        this.classList.remove('focus-recherche');
+      });
+    });
+    </script>
+</body>
+</html>
+

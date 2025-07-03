@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - Git Zéro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --shadow-primary: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.37);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-gradient);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header modernisé */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(12, 12, 12, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-sm) 5%;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-glass);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .nav {
+            display: flex;
+            gap: var(--spacing-xs);
+            align-items: center;
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-glass);
+        }
+
+        /* Hero section avec effet glassmorphism */
+        .hero-section {
+            padding: var(--spacing-xl) 5% var(--spacing-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(102, 126, 234, 0.1) 60deg, transparent 120deg, rgba(245, 87, 108, 0.1) 180deg, transparent 240deg, rgba(79, 172, 254, 0.1) 300deg, transparent 360deg);
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, #ffffff 0%, #667eea 50%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+            font-weight: 400;
+        }
+
+        /* Main content avec glass cards */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5% var(--spacing-xl);
+        }
+
+        .content-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--shadow-glass);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(31, 38, 135, 0.5);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Contributors grid améliorée */
+        .contributors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .contributor {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contributor::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .contributor:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .contributor:hover::before {
+            opacity: 0.1;
+        }
+
+        .contributor-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto var(--spacing-md);
+            border: 3px solid transparent;
+            background: var(--primary-gradient);
+            padding: 3px;
+            transition: transform 0.3s ease;
+        }
+
+        .contributor:hover .contributor-image {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .contributor-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.01em;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-link:hover {
+            background: var(--primary-gradient);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glass);
+        }
+
+        .social-link img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Footer moderne */
+        .footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            padding: var(--spacing-lg) 5%;
+            margin-top: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .nav {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .content-section {
+                padding: var(--spacing-lg);
+            }
+
+            .contributors-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .hero-section {
+                padding: var(--spacing-lg) 5%;
+            }
+        }
+
+        /* Animations personnalisées */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .contributor {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Scrollbar personnalisée */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-gradient);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <svg width="30" height="30" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M90.156 41.965L50.036 1.848c-2.34-2.34-6.135-2.34-8.475 0l-8.321 8.32 10.698 10.698c2.487-0.84 5.339-0.276 7.32 1.705 1.989 1.99 2.55 4.85 1.704 7.345l10.311 10.312c2.495-0.845 5.356-0.285 7.346 1.705 2.781 2.781 2.781 7.29 0 10.071-2.78 2.781-7.29 2.781-10.07 0-2.088-2.09-2.608-5.151-1.55-7.713l-9.615-9.616-0.001 25.325c0.677 0.335 1.316 0.783 1.88 1.347 2.78 2.781 2.78 7.289 0 10.071-2.78 2.781-7.29 2.781-10.07 0-2.781-2.781-2.781-7.29 0-10.07 0.686-0.686 1.481-1.205 2.331-1.54v-25.57c-0.85-0.335-1.645-0.855-2.33-1.54-2.097-2.098-2.61-5.174-1.54-7.744L18.649 9.376 1.85 26.175c-2.34 2.34-2.34 6.136 0 8.476l40.121 40.115c2.34 2.339 6.135 2.339 8.475 0l39.82-39.82c2.34-2.34 2.34-6.136 0-8.476"
+                            fill="white" />
+                    </svg>
+                </div>
+                <span class="site-title">Git Zér<span style="color: #667eea;">o</span><span
+                        style="color: #f5576c;">o</span><span style="color: #00f2fe;">o</span></span>
+            </div>
+            <nav class="nav">
+                <a class="nav-link" href="index.html">Accueil</a>
+                <a class="nav-link" href="AcceilCommand.html">Commandes</a>
+                <a class="nav-link active" href="about.html">À propos</a>
+            </nav>
+            </div>
+    </header>
+
+    <section class="hero-section">
+        <h1 class="hero-title">À propos de Git Zéro</h1>
+        <p class="hero-subtitle">Une équipe passionnée, un projet collaboratif, une mission : rendre Git accessible à
+            tous les développeurs.</p>
+    </section>
+
+    <main>
+        <section class="content-section">
+            <h2 class="section-title">Qui sommes-nous ?</h2>
+            <p class="section-description">
+                Nous sommes une équipe de développeurs passionnés, unis par l'envie de rendre l'apprentissage de Git
+                accessible à tous.
+                Chacun de nous a apporté ses compétences, sa créativité et son énergie pour bâtir une plateforme
+                moderne, collaborative et utile à toute la communauté.
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Comment l'idée est née ?</h2>
+            <p class="section-description">
+                Ce projet est né d'une rencontre lors d'un hackathon, où nous avons constaté que beaucoup de
+                développeurs, débutants comme confirmés, se heurtaient à la complexité de Git.
+                Nous avons alors imaginé une solution simple : une plateforme claire, pratique, et surtout adaptée aux
+                besoins réels des utilisateurs.
+                Cette aventure a aussi été l'occasion de vivre une expérience d'équipe unique, de relever des défis
+                ensemble et de mettre en pratique nos savoir-faire dans un projet concret.
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Notre vision pour la suite</h2>
+            <p class="section-description">
+                Ce site n'est qu'un point de départ. Nous rêvons d'en faire une référence évolutive, avec des exemples
+                de workflows Git réalistes,
+                un simulateur de commandes interactif, et une section communautaire où chacun pourra partager ses
+                astuces et s'entraider.
+                <br><br>
+                Notre ambition : accompagner chaque utilisateur, quel que soit son niveau, vers la maîtrise de Git.
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Les contributeurs</h2>
+            <p class="section-description">
+                Découvrez les membres de l'équipe, chacun avec son parcours, ses talents et sa passion pour le partage et l'innovation.
+            </p>
+            <div class="contributors-grid">
+                <div class="contributor">
+                    <img src="assets/images/Pascal.jpg" class="contributor-image" alt="Pascal">
+                    <h4 class="contributor-name">PASKOD Pascal</h4>
+                    <p class="contributor-role">Lead Dev & Architecte</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Paskod121/" class="social-link" title="GitHub"><img src="assets/logo/git.png" alt="GitHub"></a>
+                        <a href="https://www.linkedin.com/in/paskod-pascal" class="social-link" title="LinkedIn"><img src="assets/logo/linkdin.png" alt="LinkedIn"></a>
+                        <a href="https://youtube.com/@paskod6774?si=3jcD1FQHEvmp47HE" class="social-link" title="YouTube"><img src="assets/logo/youtube.png" alt="YouTube"></a>
+                    </div>
+                </div>
+            <div class="contributor">
+                    <img src="assets/images/Komlan josue.jpg" class="contributor-image" alt="Josué">
+                    <h4 class="contributor-name">AMEGADJIN Komlan Josué</h4>
+                    <p class="contributor-role">Développeur Backend</p>
+                    <div class="social-links">
+                        <a href="https://github.com/lepoly-create" class="social-link" title="GitHub"><img src="assets/logo/git.png" alt="GitHub"></a>
+                        <a href="https://www.facebook.com/profile.php?id=100087941988395&sk=about" class="social-link" title="Facebook"><img src="assets/logo/facebook.png" alt="Facebook"></a>
+                        <a href="#" class="social-link" title="LinkedIn"><img src="assets/logo/linkdin.png" alt="LinkedIn"></a>
+                    </div>
+            </div>
+            <div class="contributor">
+                    <img src="assets/images/maxime.jpg" class="contributor-image" alt="Maxime">
+                    <h4 class="contributor-name">ATHON Maxime</h4>
+                    <p class="contributor-role">Développeur Frontend</p>
+                    <div class="social-links">
+                        <a href="https://github.com/athonmaxime" class="social-link" title="GitHub"><img src="assets/logo/git.png" alt="GitHub"></a>
+                        <a href="https://www.linkedin.com/in/maxime-athon" class="social-link" title="LinkedIn"><img src="assets/logo/linkdin.png" alt="LinkedIn"></a>
+                        <a href="#" class="social-link" title="Facebook"><img src="assets/logo/facebook.png" alt="Facebook"></a>
+                    </div>
+            </div>
+            <div class="contributor">
+                    <img src="assets/images/ebene.jpg" class="contributor-image" alt="Ebène">
+                    <h4 class="contributor-name">BOTON Ebène</h4>
+                    <p class="contributor-role">UI/UX Designer</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="GitHub"><img src="assets/logo/git.png" alt="GitHub"></a>
+                        <a href="#" class="social-link" title="LinkedIn"><img src="assets/logo/linkdin.png" alt="LinkedIn"></a>
+                        <a href="#" class="social-link" title="Facebook"><img src="assets/logo/facebook.png" alt="Facebook"></a>
+                    </div>
+            </div>
+            <div class="contributor">
+                    <img src="assets/images/Kodjovi Justin.jpg" class="contributor-image" alt="Justin">
+                    <h4 class="contributor-name">HENOVI Justin</h4>
+                    <p class="contributor-role">Développeur Fullstack</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Justin-java" class="social-link" title="GitHub"><img src="assets/logo/git.png" alt="GitHub"></a>
+                        <a href="https://www.linkedin.com/feed/" class="social-link" title="LinkedIn"><img src="assets/logo/linkdin.png" alt="LinkedIn"></a>
+                        <a href="https://www.facebook.com/profile.php?id=100088504550518" class="social-link" title="Facebook"><img src="assets/logo/facebook.png" alt="Facebook"></a>
+                    </div>
+            </div>
+            <div class="contributor">
+                    <img src="assets/images/seydou.png" class="contributor-image" alt="Seydou">
+                    <h4 class="contributor-name">NDIAYE Seydou</h4>
+                    <p class="contributor-role">DevOps & Cloud</p>
+                    <div class="social-links">
+                        <a href="https://github.com/NdiayeSeydou" class="social-link" title="GitHub"><img src="assets/logo/git.png" alt="GitHub"></a>
+                        <a href="https://www.linkedin.com/in/seydou-ndiaye-7270892a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link" title="LinkedIn"><img src="assets/logo/linkdin.png" alt="LinkedIn"></a>
+                        <a href="https://x.com/NdiayeSeydou12?s=09" class="social-link" title="X"><img src="assets/logo/x.png" alt="X"></a>
+                    </div>
+            </div>
+            <div class="contributor">
+                    <img src="assets/images/Kondéabalo Calixte.jpg" class="contributor-image" alt="Calixte">
+                    <h4 class="contributor-name">TAKARA K. Calixte</h4>
+                    <p class="contributor-role">Développeur Mobile</p>
+                    <div class="social-links">
+                        <a href="https://github.com/calixtetakara" class="social-link" title="GitHub"><img src="assets/logo/git.png" alt="GitHub"></a>
+                        <a href="https://www.linkedin.com/in/calixte-takara-589b46347/" class="social-link" title="LinkedIn"><img src="assets/logo/linkdin.png" alt="LinkedIn"></a>
+                        <a href="https://www.facebook.com/profile.php?id=100082320798503" class="social-link" title="Facebook"><img src="assets/logo/facebook.png" alt="Facebook"></a>
+                    </div>
+            </div>
+            <div class="contributor">
+                    <img src="assets/images/leader.jpg" class="contributor-image" alt="Emeric">
+                    <h4 class="contributor-name">TOGNON Eméric</h4>
+                    <p class="contributor-role">Chef de projet</p>
+                    <div class="social-links">
+                        <a href="https://github.com/leadertgn" class="social-link" title="GitHub"><img src="assets/logo/git.png" alt="GitHub"></a>
+                        <a href="https://www.linkedin.com/in/tognon-%C3%A9meric-01b1ab350?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link" title="LinkedIn"><img src="assets/logo/linkdin.png" alt="LinkedIn"></a>
+                        <a href="https://wa.me/22998419796" class="social-link" title="WhatsApp"><img src="assets/logo/whatsapp.png" alt="WhatsApp"></a>
+                    </div>
+            </div>
+            </div>
+    </section>
+</main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-title">Git Zér<span style="color: #667eea;">o</span><span style="color: #f5576c;">o</span><span style="color: #00f2fe;">o</span></div>
+            <div class="footer-text">&copy; 2025 Projet Collaboratif – Tous droits réservés.</div>
+    </div>
+</footer>
+</body>
+</html>
