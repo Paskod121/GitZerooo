@@ -118,6 +118,17 @@ body {
     box-shadow: var(--shadow-glass);
 }
 
+/* Focus visibility for accessibility on interactive elements */
+.nav-link:focus-visible,
+.search-input:focus-visible,
+.search-button:focus-visible,
+.bouton-details:focus-visible,
+.social-link:focus-visible {
+    outline: 3px solid #ffffff55;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px #ffffff22, var(--shadow-glass);
+}
+
 .hero-section {
     padding: var(--spacing-xl) 5% var(--spacing-lg);
     text-align: center;

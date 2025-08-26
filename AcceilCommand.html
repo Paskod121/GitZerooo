@@ -19,7 +19,7 @@
             </div>
             <nav class="nav">
                 <a class="nav-link" href="index.html">Accueil</a>
-                <a class="nav-link active" href="AcceilCommand.html">Commandes</a>
+                <a class="nav-link active" aria-current="page" href="AcceilCommand.html">Commandes</a>
                 <a class="nav-link" href="about.html">À propos</a>
             </nav>
         </div>
@@ -118,6 +118,7 @@
                 </div>
             </div>
         </section>
+        <p id="search-empty" style="display:none;text-align:center;color:var(--text-secondary);margin-top:1rem;">Aucun résultat pour votre recherche.</p>
         <section class="content-section">
             <h2 class="section-title">Travail avec les branches</h2>
             <div class="contributors-grid">
@@ -295,17 +296,21 @@
 
       champRecherche.addEventListener('input', function () {
         const requete = this.value.trim().toLowerCase();
+        let visibles = 0;
         cartesCommandes.forEach(function (carte) {
           const texteCommande = carte.querySelector('.contributor-name').textContent.toLowerCase();
           const texteRole = carte.querySelector('.contributor-role').textContent.toLowerCase();
           if (texteCommande.includes(requete) || texteRole.includes(requete)) {
             carte.style.display = '';
             carte.classList.add('surlignage');
+            visibles++;
           } else {
             carte.style.display = 'none';
             carte.classList.remove('surlignage');
           }
         });
+        const empty = document.getElementById('search-empty');
+        if (empty) empty.style.display = visibles ? 'none' : '';
       });
 
       champRecherche.addEventListener('focus', function () {
