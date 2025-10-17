@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IDE Git pédagogique: éditeur, terminal et aide guidée pour s'entraîner à Git.">
+    <title>IDE Git - Git Zéro</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <svg width="30" height="30" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M90.156 41.965L50.036 1.848c-2.34-2.34-6.135-2.34-8.475 0l-8.321 8.32 10.698 10.698c2.487-0.84 5.339-0.276 7.32 1.705 1.989 1.99 2.55 4.85 1.704 7.345l10.311 10.312c2.495-0.845 5.356-0.285 7.346 1.705 2.781 2.781 2.781 7.29 0 10.071-2.78 2.781-7.29 2.781-10.07 0-2.088-2.09-2.608-5.151-1.55-7.713l-9.615-9.616-0.001 25.325c0.677 0.335 1.316 0.783 1.88 1.347 2.78 2.781 2.78 7.289 0 10.071-2.78 2.781-7.29 2.781-10.07 0-2.781-2.781-2.781-7.29 0-10.07 0.686-0.686 1.481-1.205 2.331-1.54v-25.57c-0.85-0.335-1.645-0.855-2.33-1.54-2.097-2.098-2.61-5.174-1.54-7.744L18.649 9.376 1.85 26.175c-2.34 2.34-2.34 6.136 0 8.476l40.121 40.115c2.34 2.339 6.135 2.339 8.475 0l39.82-39.82c2.34-2.34 2.34-6.136 0-8.476" fill="white"/>
+                    </svg>
+                </div>
+                <span class="site-title">Git Zér<span class="s1">o</span><span class="s2">o</span><span class="s3">o</span></span>
+            </div>
+            <nav class="nav">
+                <a class="nav-link" href="index.html">Accueil</a>
+                <a class="nav-link" href="AcceilCommand.html">Commandes</a>
+                <a class="nav-link" href="about.html">À propos</a>
+                <a class="nav-link active" aria-current="page" href="ide.html">IDE</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <h1 class="hero-title">IDE Git pédagogique</h1>
+        <p class="hero-subtitle">Éditez des fichiers, exécutez des commandes Git et suivez des exercices guidés. Conçu pour mobiles, tablettes et desktop.</p>
+    </section>
+
+    <main>
+        <section class="content-section">
+            <div class="ide-tabs" role="tablist" aria-label="Onglets IDE">
+                <button class="ide-tab active" role="tab" aria-controls="pane-editor" aria-selected="true">Éditeur</button>
+                <button class="ide-tab" role="tab" aria-controls="pane-terminal" aria-selected="false">Terminal</button>
+                <button class="ide-tab" role="tab" aria-controls="pane-help" aria-selected="false">Aide</button>
+            </div>
+            <div class="ide-toolbar" role="toolbar" aria-label="Outils IDE" style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:space-between;align-items:center;">
+                <div style="display:flex;gap:0.5rem;align-items:center;">
+                    <button id="btn-new-file" class="btn" type="button" aria-label="Nouveau fichier">Nouveau fichier</button>
+                    <button id="btn-reset" class="btn btn-danger" type="button" aria-label="Réinitialiser l'atelier">Réinitialiser</button>
+                    <label style="color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:center;gap:0.4rem;">
+                        <input id="toggle-guided" type="checkbox" aria-label="Activer le mode guidé"/>
+                        Mode guidé
+                    </label>
+                </div>
+                <div style="display:flex;gap:0.5rem;align-items:center;">
+                    <span style="color:var(--text-secondary);font-size:0.9rem;">Étape: <strong id="guided-step">1/5</strong></span>
+                    <button id="btn-advanced" class="btn btn-primary" type="button" aria-haspopup="dialog" aria-controls="dialog-advanced">Activer l’IDE avancé</button>
+                </div>
+            </div>
+
+            <div class="ide-grid" aria-label="Zone de travail IDE">
+                <div class="pane" id="pane-editor" aria-labelledby="title-editor">
+                    <div class="pane-title" id="title-editor">Éditeur</div>
+                    <textarea id="editor" aria-label="Éditeur de code" style="width:100%;height:100%;background:transparent;color:var(--text-primary);border:1px solid var(--glass-border);border-radius:12px;padding:0.75rem;resize:none;"></textarea>
+                </div>
+                <div class="pane" id="pane-terminal" aria-labelledby="title-terminal">
+                    <div class="pane-title" id="title-terminal">Terminal</div>
+                    <div id="terminal-output" aria-live="polite" style="height:75%;overflow:auto;border:1px solid var(--glass-border);border-radius:12px;padding:0.75rem;margin-bottom:0.5rem;"></div>
+                    <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem;">
+                        <button id="btn-copy" class="btn" type="button" aria-label="Copier la sortie">Copier</button>
+                        <button id="btn-clear" class="btn" type="button" aria-label="Effacer la sortie">Effacer</button>
+                    </div>
+                    <form id="terminal-form" style="display:flex;gap:0.5rem;align-items:center;">
+                        <label for="terminal-input" class="sr-only">Commande</label>
+                        <input id="terminal-input" autocomplete="off" placeholder="Tapez une commande (ex: git init)" aria-label="Entrer une commande"
+                               style="flex:1;border:1px solid var(--glass-border);background:transparent;color:var(--text-primary);border-radius:12px;padding:0.6rem 0.8rem;"/>
+                        <button class="bouton-details" type="submit">Exécuter</button>
+                    </form>
+                    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem;">
+                        <button data-cmd="git status" type="button" class="bouton-details">status</button>
+                        <button data-cmd="git add ." type="button" class="bouton-details">add .</button>
+                        <button data-cmd="git commit -m \"init\"" type="button" class="bouton-details">commit -m "init"</button>
+                        <button data-cmd="git log" type="button" class="bouton-details">log</button>
+                    </div>
+                </div>
+                <div class="pane" id="pane-help" aria-labelledby="title-help">
+                    <div class="pane-title" id="title-help">Aide & exercices</div>
+                    <div id="help-panel" style="height:100%;overflow:auto;">
+                        <p class="section-description">Suivez les étapes du mode guidé pour découvrir Git progressivement. Chaque exercice valide automatiquement vos actions et vous propose des explications claires.</p>
+                        <div class="guided-progress">
+                            <div class="guided-bar" aria-hidden="true"><span id="guided-bar-fill" style="width:20%"></span></div>
+                            <span style="color:var(--text-secondary);font-size:0.9rem;">Étape <strong id="guided-step-label">1/5</strong></span>
+                        </div>
+                        <div class="guided-steps" id="guided-steps">
+                            <div class="guided-step-card" data-step="1"><strong>1.</strong> Initialiser un dépôt — <code>git init</code></div>
+                            <div class="guided-step-card" data-step="2"><strong>2.</strong> Créer et ajouter un fichier — <code>git add fichier.txt</code></div>
+                            <div class="guided-step-card" data-step="3"><strong>3.</strong> Valider un commit — <code>git commit -m "message"</code></div>
+                            <div class="guided-step-card" data-step="4"><strong>4.</strong> Consulter l'historique — <code>git log</code></div>
+                            <div class="guided-step-card" data-step="5"><strong>5.</strong> Modifier et revalider — <code>git add</code>, <code>git commit</code></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-title">Git Zér<span class="s1">o</span><span class="s2">o</span><span class="s3">o</span></div>
+            <div class="footer-text">&copy; 2025 Projet Collaboratif – Tous droits réservés.</div>
+        </div>
+    </footer>
+
+    <!-- Modal: Activer IDE avancé -->
+    <div class="modal-backdrop" id="dialog-advanced-backdrop" role="presentation">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="dialog-advanced-title" id="dialog-advanced">
+            <div class="modal-title" id="dialog-advanced-title">Activer l'IDE avancé</div>
+            <p class="section-description">Cela chargera l'éditeur Monaco, le terminal xterm et Git dans votre navigateur. C'est plus puissant mais un peu plus lourd. Voulez‑vous continuer ?</p>
+            <div class="modal-actions">
+                <button id="adv-cancel" class="btn">Annuler</button>
+                <button id="adv-continue" class="btn btn-primary">Activer</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts/ide.js" defer></script>
+</body>
+
+</html>
+
